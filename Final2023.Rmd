@@ -1,0 +1,129 @@
+---
+main_topsize: 0.2 #percent coverage of the poster
+main_bottomsize: 0.1
+primary_colour: "skyblue"
+secondary_colour: "green"
+accent_colour: "#cc0000"
+
+#ESSENTIALS
+title: '**Climate Change and Natural Disasters**'
+author:
+  - name: '**Sisir Bhandari**'
+    affil: 1
+    main: true
+    twitter: sisirbhandari
+    email: sb9114b@student.american.edu
+    address: School of International Service (SIS), American University
+main_findings:
+  - "Climate Change and Natural Diasasters Impact in **South Asia**"
+logoleft_name: https&#58;//raw.githubusercontent.com/brentthorne/posterdown/master/images/betterhexlogo.png
+logoright_name: https&#58;//raw.githubusercontent.com/brentthorne/posterdown/master/images/betterhexlogo.png
+logocenter_name: https&#58;//raw.githubusercontent.com/brentthorne/posterdown/master/images/qr-code-black.png
+output: 
+  posterdown::posterdown_betterport:
+    self_contained: false
+    pandoc_args: --mathjax
+    number_sections: false
+bibliography: packages.bib
+link-citations: true
+---
+
+```{r setup1, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE,
+                      warning = FALSE,
+                      tidy = FALSE,
+                      message = FALSE,
+                      fig.align = 'center',
+                      out.width = "100%")
+options(knitr.table.format = "html") 
+```
+
+```{r setup11, include = FALSE}
+library(dplyr)
+library(tidyverse)
+library(ggplot2)
+library(reshape2)
+library(posterdown)
+library(readxl)
+```
+
+```{r setup10, include = TRUE}
+pp <- read_excel("~/Desktop/American University /second/Data Analysis/poster/pp.xlsx")
+
+```
+
+```{r setup13, include = TRUE}
+nnsf <- read_excel("~/Desktop/American University /second/Data Analysis/poster/nnsf.xlsx")
+```
+
+# Introduction
+`Climate change` is a pressing issue leading to a rise in the frequency and severity of natural disasters globally. The impacts of climate change are particularly pronounced in [South Asia](https://www.emdat.be/), where recent years have witnessed a surge of devastating natural disasters such as `floods, landslides, drought, and cyclones`. These events have resulted in significant loss of life and property, highlighting the urgent need for collective action to address the issue of climate change. Moreover, these disasters have exposed vulnerabilities and inequalities in the region, disproportionately affecting the most marginalized and impoverished populations. It is essential to prioritize **sustainable and climate-resilient development** to mitigate climate change's impact and build resilience to its effects in South Asia and globally.
+
+```{r setup6, include=FALSE}
+knitr::write_bib(c('posterdown', 'rmarkdown','pagedown'), 'packages.bib')
+```
+
+## Objectives
+
+1. To understand the scale and scope of climate change impacts
+2. To inform evidence-based policy
+3. To monitor progress towards climate goals
+4. To facilitate international cooperation
+
+# Methodology
+This study is focused on analyzing the social, economic, and political developments that occurred in South Asian countries over the past decade, specifically between 2010 and 2023. The countries under consideration include India, Pakistan, Bangladesh, Nepal, Bhutan, Sri Lanka, and the Maldives. The study will be conducted using a four-step methodology. Firstly, the scope of the research will be defined, followed by the collection of data from Emdat, a reliable source of information. The data collected will be analyzed using time series techniques to identify any patterns or trends that have emerged over the past decade. Finally, the results will be interpreted, and conclusions drawn regarding the state of affairs in these countries. The study aims to provide valuable insights into the social, economic, and political landscape of South Asian countries and identify any potential areas for improvement.
+
+# Natural Disasters in South Asia
+South Asia is experiencing a surge of natural disasters, including floods, landslides, and extreme weather events. In the summer of 2021 and 2022, heavy monsoon rains caused widespread flooding and landslides in many parts of South Asia, including India, Pakistan, Nepal, and Bangladesh, resulting in significant loss of life and damage to homes, infrastructure, and crops. In 2022, Over 1900 people died from monsoon rains and related incidents in India and Pakistan alone. 
+
+In addition to flooding and landslides, South Asia experienced extreme heat waves, with temperatures exceeding 50 degrees Celsius in some parts of the region. These heatwaves led to numerous deaths, particularly among vulnerable populations such as the elderly and those working outdoors. Furthermore, the region is experiencing an increase in tropical cyclones, with Cyclone Yaas hitting the eastern coast of India in May 2021, causing extensive damage to infrastructure and crops in the affected areas.
+
+Overall, the current scenario of natural disasters in South Asia is concerning, as climate change continues to exacerbate the frequency and severity of extreme weather events in the region. These events pose significant challenges for vulnerable communities, including those already impacted by poverty, conflict, and displacement.
+
+# A case of South Asia
+Data since 2010 shows that South Asia has experienced an increase in natural disasters. This is likely due to a combination of factors, including climate change and human activities such as deforestation and urbanization. The increased frequency and severity of disasters such as floods, landslides, and extreme weather events pose significant challenges for vulnerable communities in the region, including those impacted by poverty, conflict, and displacement. Addressing these challenges will require a comprehensive approach that includes both mitigation measures to reduce the impact of climate change and adaptation strategies to build resilience in vulnerable communities.
+
+```{r, fig.cap='The figure shows the total affected population by country', include = TRUE}
+ggplot(data = pp, aes(x = Year, y = `Total Affected`, fill = Country)) +
+  geom_bar(stat = "identity") +
+  scale_y_continuous(labels = function(x) format(x, scientific = FALSE)) +
+  labs(title = "Population Affected Over-Time by Country") +
+  theme(plot.title = element_text(size = 17, face = "bold", color = "darkgreen"),
+        panel.background = element_rect(fill = "gray90"))
+```
+
+The data suggests that there has been an increase in the number of disasters and casualties over time, and attributes this to the government's failure to address climate change issues.Climate change has been identified as one of the major factors contributing to the increase in disasters and their severity. As global temperatures rise, extreme weather events such as hurricanes, floods, and wildfires become more frequent and intense. These events can have devastating impacts on communities and the environment, leading to loss of life and property damage.
+
+```{r, fig.cap=' Total Deaths by Country Over Year', include = TRUE}
+ggplot(nnsf, aes(x=Year, y=`Total Deaths`, colour = Country)) +
+  geom_point() +
+  geom_line() +
+  labs(title = "Total Deaths",
+       x = "Year",
+       y = "No. of deaths") +
+  theme_minimal()
+```
+Climate change-induced disasters are becoming more frequent and severe in South Asia, resulting in a growing number of deaths and injuries. The situation is particularly dire in countries such as India, Nepal, and Pakistan, where the number of deaths is rising at an alarming rate. For instance, Nepal witnessed over 8000 deaths, India over 7000 deaths, and Pakistan over 2500 deaths due to climate-related disasters. Moreover, the number of deaths in other South Asian countries has also increased.
+
+In addition to deaths, there has also been a significant rise in the number of injuries due to these disasters in recent years. In 2017, Sri Lanka alone witnessed more than 150000 people injured, while the number of injured people in other South Asian countries like Pakistan and India is also on the rise. These statistics indicate the severity of the situation and highlight the urgent need for action to mitigate the impact of climate change in the region.
+
+
+
+
+
+
+```{r, fig.cap=' Total Injured by Country Over Year', include = TRUE}
+ggplot(nnsf, aes(x=Year, y=`No Injured`, colour = Country)) +
+  geom_point() +
+  geom_line() +
+  labs(title = "Total injured",
+       x = "Year",
+       y = "No. of injured") +
+  theme_minimal()
+```
+
+The government has a responsibility to take action on climate change and implement policies and programs to reduce greenhouse gas emissions and build resilience to the impacts of climate change. Failure to do so can result in increased risk and vulnerability to disasters, as well as the long-term social, economic, and environmental costs associated with climate change impacts.
+
+# References
+https://www.emdat.be/about
+https://www.worldbank.org/en/topic/climatechange

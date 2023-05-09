@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+<title>Climate Change and Natural Disasters</title>
+
+
+
+
+
+
+
+<!--
+Font-awesome icons ie github or twitter
+-->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/brands.css" integrity="sha384-n9+6/aSqa9lBidZMRCQHTHKJscPq6NW4pCQBiMmHdUCvPN8ZOg2zJJTkC7WIezWv" crossorigin="anonymous">
+
+<!--
+Google fonts api stuff
+-->
+<link href='https://fonts.googleapis.com/css?family=Special Elite' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Rasa' rel='stylesheet'>
+
+<!--
+Here are the required style attributes for css to make this poster work :)
+-->
+<style>
+@page {
+size: 36in 48in;
+margin: 0;
+padding: 0;
+}
+body {
+margin: 0px;
+padding: 0px;
+width: 36in;
+height: 48in;
+text-align: justify;
+font-size: 45px;
+line-height: 1.05;
+}
+/* RMarkdown Class Styles */
+/* center align leaflet map,
+from https://stackoverflow.com/questions/52112119/center-leaflet-in-a-rmarkdown-document */
+.html-widget {
+margin: auto;
+position: sticky;
+margin-top: 2cm;
+margin-bottom: 2cm;
+}
+.leaflet.html-widget.html-widget-static-bound.leaflet-container.leaflet-touch.leaflet-fade-anim.leaflet-grab.leaflet-touch-drag.leaflet-touch-zoom {
+position: sticky;
+width: 100%;
+}
+pre.sourceCode.r, pre.sourceCode.python {
+background-color: #ffffff20;
+border: solid green 1mm;
+border-radius: 0.5em;
+padding: 4mm;
+margin: auto;
+margin-top: 1em;
+margin-bottom: 1em;
+/* align-items: center; */
+}
+div.sourceCode {
+background-color: transparent;
+width: 85%;
+margin-left: auto;
+margin-right: auto;
+}
+code.sourceCode.r, code.sourceCode.python {
+background-color: transparent;
+font-size: 20pt;
+border-radius: 2mm;
+}
+code {
+font-size: 25pt;
+font-family: monospace;
+background-color: green24;
+color: green;
+padding: 1.2mm;
+line-height: 1;
+border-radius: 2mm;
+}
+caption {
+margin-bottom: 10px;
+font-size: 20pt;
+font-style: italic;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: green20;
+}
+.table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td{
+  border-spacing: 0;
+  font-size: 40%;
+  border-style: none;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-right: 1em;
+  padding-left: 1em;
+  line-height: 1em;
+}
+table {
+  margin: auto;
+}
+th {
+  padding-left: 5mm;
+  padding-right: 5mm;
+}
+.caption {
+font-size: 20pt;
+font-style: italic;
+padding-top: 0;
+}
+.references {
+font-size: 20px;
+line-height: 90%;
+}
+/* Create three unequal columns that floats next to each other */
+.column {
+float: left;
+padding: 0px;
+}
+.outer {
+width: 36in;
+height: calc(48in *  (1 - 0.2 - 0.1 - 0.01) );
+-webkit-column-count: 3; /* Chrome, Safari, Opera */
+-moz-column-count: 3; /* Firefox */
+column-count: 3;
+-webkit-column-fill: auto;
+-moz-column-fill: auto;
+column-fill: auto;
+column-gap: 0;
+padding-left: 0cm;
+padding-right: 0cm;
+/* -webkit-column-rule-width: 50%;
+-moz-column-rule-width: 50%;
+column-rule-width: 50%; */
+-webkit-column-rule-style: none;
+-moz-column-rule-style: none;
+column-rule-style: none;
+-webkit-column-rule-color: black;
+-moz-column-rule-color: black;
+column-rule-color: black;
+background-color: #ffffff;
+font-family: Rasa;
+margin-top: calc(48in *  0.2 );
+padding-top: 1em;
+padding-bottom: 1em;
+}
+span.citation {
+  color: green;
+  font-weight: bold;
+}
+a {
+text-decoration: none;
+color: green;
+}
+#title {
+font-size: 125pt;
+text-align: left;
+margin: 0;
+line-height: 98%;
+border-bottom: 0;
+font-weight: normal;
+background: 0;
+}
+#author {
+color:skyblue;
+margin: 0;
+line-height: 85%;
+font-size: 1.17em;
+}
+#affiliation {
+padding-top: 0.1em;
+color: ;
+font-style: italic;
+font-size: 25px;
+margin: 0;
+}
+sup {
+color: #cc0000;
+}
+.affiliation sup {
+font-size: 20px;
+}
+.author {
+text-align: left;
+}
+.author sup {
+font-size: 30px;
+}
+.author_extra {
+color: green;
+margin: 0;
+line-height: 85%;
+font-size: 35px;
+text-align: left;
+}
+.outer h1, h2, h3, h4, h5, h6 {
+text-align: center;
+margin: 0;
+font-weight: bold;
+}
+.section h1 {
+  text-align:center;
+  padding-bottom:5px;
+  background:
+    linear-gradient(
+      to left,
+      #ffffff 1%,
+      #ffffff 20%,
+      skyblue75 33%,
+      skyblue 50%,
+      skyblue75 66%,
+      #ffffff 80%,
+      #ffffff 99%
+    )
+    left
+    bottom
+    #ffffff
+    no-repeat;
+  background-size:100% 5px ;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+.outer h2 {
+text-align: center;
+}
+.outer p, .level2 {
+color: #000000;
+}
+.outer ol {
+padding-left: 8%;
+padding-right: 8%;
+text-align: left;
+}
+.main {
+width: 36in;
+height: calc(48in * 0.2);
+position: absolute;
+background-color: skyblue;
+color: #ffffff90;
+font-family: Special Elite;
+background-image: linear-gradient(skyblue 50%,green);
+}
+.main strong {
+color: #ffffff;
+}
+.main strong > sup {
+color: #ffffff;
+}
+.main sup {
+color: #ffffff90;
+}
+#main-img-left {
+width: 10%;
+left: 0.5in;
+bottom: 0.2in;
+position: absolute;
+}
+#main-img-center {
+width: 10%;
+left: calc(36in * 0.45);
+bottom: 0.5in;
+position: absolute;
+}
+#main-img-right {
+width: 10%;
+right: 0.5in;
+bottom: 0.2in;
+position: absolute;
+}
+.main p {
+font-size: 150px;
+font-family: Special Elite;
+text-align: center;
+margin: 0;
+position: absolute;
+top: 50%;
+-ms-transform: translateY(-50%);
+transform: translateY(-50%);
+margin-left: 1em;
+}
+.fab {
+color: #00000060;
+font-size: 25px;
+}
+.twitter, i {
+color: #00000060;
+font-size: 35px;
+text-decoration: none;
+}
+a.email {
+text-decoration: none;
+color: #00000060;
+font-size: 35px;
+}
+.envelope {
+color: #00000060;
+font-size: 5px;
+text-decoration: none;
+}
+.globe {
+color: #00000060;
+font-size: 5px;
+text-decoration: none;
+}
+.globetext {
+color: #00000060;
+font-size: 35px;
+text-decoration: none;
+}
+.poster_wrap {
+width: 36in;
+height: 48in;
+padding: 0cm;
+}
+.main_bottom {
+width: 36in;
+height: calc(48in * 0.1);
+margin-top: calc(48in * (1 - 0.1));
+position: absolute;
+background-color: skyblue;
+background-image: linear-gradient(green 10%, skyblue);
+}
+.section {
+  padding-left: 10mm;
+  padding-right: 10mm;
+}
+span > #tab:mytable {
+  font-weight: bold;
+}
+.orcid img {
+  width: 3%;
+}
+.emphasis {
+  background-color: #008080;
+  color: #ffffff;
+  border: solid #0b2045 3mm;
+  margin: 1em;
+  padding-left: 0;
+  padding-right: 0;
+}
+.emphasis h1 {
+  font-weight: bold;
+  background: none;
+  background-color: #0b2045;
+  padding-bottom: 5mm;
+  padding-top: 1mm;
+  margin-top: -1mm;
+  margin-right: -1mm;
+  margin-left: -1mm;
+}
+.emphasis blockquote {
+  border: 0;
+}
+.emphasis ol {
+  padding: 0;
+  padding-left: 8%;
+  font-size: 100%;
+  font-weight: bold;
+}
+.emphasis p {
+  color: #ffffff;
+}
+</style>
+</head>
+<body>
+
+
+<div class="poster_wrap">
+
+<div class="column outer">
+<div class="section">
+<h1 id="title"><strong>Climate Change and Natural Disasters</strong></h1><br>
+<h3 id="author" class="author">
+
+<strong>Sisir Bhandari</strong><sup> 1</sup><br>
+<a class="twitter" href="https://mobile.twitter.com/sisirbhandari"><i class="fab fa-twitter"></i>&nbsp;&nbsp;@sisirbhandari</a><br>
+
+<a class='envelope'><i class="fas fa-envelope"></i></a> <a href="mailto:sb9114b@student.american.edu" class="email">sb9114b@student.american.edu</a> <br>
+</h3>
+
+<h5 id="author_extra", class="author_extra">
+</h5>
+
+
+</div>
+
+<div id="introduction" class="section level1">
+<h1>Introduction</h1>
+<p><code>Climate change</code> is a pressing issue leading to a rise in the frequency and severity of natural disasters globally. The impacts of climate change are particularly pronounced in <a href="https://www.emdat.be/">South Asia</a>, where recent years have witnessed a surge of devastating natural disasters such as <code>floods, landslides, drought, and cyclones</code>. These events have resulted in significant loss of life and property, highlighting the urgent need for collective action to address the issue of climate change. Moreover, these disasters have exposed vulnerabilities and inequalities in the region, disproportionately affecting the most marginalized and impoverished populations. It is essential to prioritize <strong>sustainable and climate-resilient development</strong> to mitigate climate change’s impact and build resilience to its effects in South Asia and globally.</p>
+<div id="objectives" class="section level2">
+<h2>Objectives</h2>
+<ol style="list-style-type: decimal">
+<li>To understand the scale and scope of climate change impacts</li>
+<li>To inform evidence-based policy</li>
+<li>To monitor progress towards climate goals</li>
+<li>To facilitate international cooperation</li>
+</ol>
+</div>
+</div>
+<div id="methodology" class="section level1">
+<h1>Methodology</h1>
+<p>This study is focused on analyzing the social, economic, and political developments that occurred in South Asian countries over the past decade, specifically between 2010 and 2023. The countries under consideration include India, Pakistan, Bangladesh, Nepal, Bhutan, Sri Lanka, and the Maldives. The study will be conducted using a four-step methodology. Firstly, the scope of the research will be defined, followed by the collection of data from Emdat, a reliable source of information. The data collected will be analyzed using time series techniques to identify any patterns or trends that have emerged over the past decade. Finally, the results will be interpreted, and conclusions drawn regarding the state of affairs in these countries. The study aims to provide valuable insights into the social, economic, and political landscape of South Asian countries and identify any potential areas for improvement.</p>
+</div>
+<div id="natural-disasters-in-south-asia" class="section level1">
+<h1>Natural Disasters in South Asia</h1>
+<p>South Asia is experiencing a surge of natural disasters, including floods, landslides, and extreme weather events. In the summer of 2021 and 2022, heavy monsoon rains caused widespread flooding and landslides in many parts of South Asia, including India, Pakistan, Nepal, and Bangladesh, resulting in significant loss of life and damage to homes, infrastructure, and crops. In 2022, Over 1900 people died from monsoon rains and related incidents in India and Pakistan alone.</p>
+<p>In addition to flooding and landslides, South Asia experienced extreme heat waves, with temperatures exceeding 50 degrees Celsius in some parts of the region. These heatwaves led to numerous deaths, particularly among vulnerable populations such as the elderly and those working outdoors. Furthermore, the region is experiencing an increase in tropical cyclones, with Cyclone Yaas hitting the eastern coast of India in May 2021, causing extensive damage to infrastructure and crops in the affected areas.</p>
+<p>Overall, the current scenario of natural disasters in South Asia is concerning, as climate change continues to exacerbate the frequency and severity of extreme weather events in the region. These events pose significant challenges for vulnerable communities, including those already impacted by poverty, conflict, and displacement.</p>
+</div>
+<div id="a-case-of-south-asia" class="section level1">
+<h1>A case of South Asia</h1>
+<p>Data since 2010 shows that South Asia has experienced an increase in natural disasters. This is likely due to a combination of factors, including climate change and human activities such as deforestation and urbanization. The increased frequency and severity of disasters such as floods, landslides, and extreme weather events pose significant challenges for vulnerable communities in the region, including those impacted by poverty, conflict, and displacement. Addressing these challenges will require a comprehensive approach that includes both mitigation measures to reduce the impact of climate change and adaptation strategies to build resilience in vulnerable communities.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-1"></span>
+<img src="Final2023_files/figure-html/unnamed-chunk-1-1.png" alt="The figure shows the total affected population by country" width="100%" />
+<p class="caption">
+Figure 1: The figure shows the total affected population by country
+</p>
+</div>
+<p>The data suggests that there has been an increase in the number of disasters and casualties over time, and attributes this to the government’s failure to address climate change issues.Climate change has been identified as one of the major factors contributing to the increase in disasters and their severity. As global temperatures rise, extreme weather events such as hurricanes, floods, and wildfires become more frequent and intense. These events can have devastating impacts on communities and the environment, leading to loss of life and property damage.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-2"></span>
+<img src="Final2023_files/figure-html/unnamed-chunk-2-1.png" alt=" Total Deaths by Country Over Year" width="100%" />
+<p class="caption">
+Figure 2:  Total Deaths by Country Over Year
+</p>
+</div>
+<p>Climate change-induced disasters are becoming more frequent and severe in South Asia, resulting in a growing number of deaths and injuries. The situation is particularly dire in countries such as India, Nepal, and Pakistan, where the number of deaths is rising at an alarming rate. For instance, Nepal witnessed over 8000 deaths, India over 7000 deaths, and Pakistan over 2500 deaths due to climate-related disasters. Moreover, the number of deaths in other South Asian countries has also increased.</p>
+<p>In addition to deaths, there has also been a significant rise in the number of injuries due to these disasters in recent years. In 2017, Sri Lanka alone witnessed more than 150000 people injured, while the number of injured people in other South Asian countries like Pakistan and India is also on the rise. These statistics indicate the severity of the situation and highlight the urgent need for action to mitigate the impact of climate change in the region.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-3"></span>
+<img src="Final2023_files/figure-html/unnamed-chunk-3-1.png" alt=" Total Injured by Country Over Year" width="100%" />
+<p class="caption">
+Figure 3:  Total Injured by Country Over Year
+</p>
+</div>
+<p>The government has a responsibility to take action on climate change and implement policies and programs to reduce greenhouse gas emissions and build resilience to the impacts of climate change. Failure to do so can result in increased risk and vulnerability to disasters, as well as the long-term social, economic, and environmental costs associated with climate change impacts.</p>
+</div>
+<div id="references" class="section level1">
+<h1>References</h1>
+<p><a href="https://www.emdat.be/about" class="uri">https://www.emdat.be/about</a>
+<a href="https://www.worldbank.org/en/topic/climatechange" class="uri">https://www.worldbank.org/en/topic/climatechange</a></p>
+</div>
+
+</div>
+<div class="main">
+<p>Climate Change and Natural Diasasters Impact in <strong>South Asia</strong></p>
+</div>
+<div class="main_bottom">
+<img id="main-img-left" src=https://raw.githubusercontent.com/brentthorne/posterdown/master/images/betterhexlogo.png>
+<img id="main-img-center" src=https://raw.githubusercontent.com/brentthorne/posterdown/master/images/qr-code-black.png>
+<img id="main-img-right" src=https://raw.githubusercontent.com/brentthorne/posterdown/master/images/betterhexlogo.png>
+</div>
+</div>
+
+
+
+</body>
+</html>
